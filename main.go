@@ -4,9 +4,9 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
+
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -35,7 +35,7 @@ func assumeRoleWithWebIdentity() (*sts.AssumeRoleWithWebIdentityOutput, error) {
 	}
 
 	// Read the Web Identity Token
-	webIdentityToken, err := ioutil.ReadFile(tokenFile)
+	webIdentityToken, err := os.ReadFile(tokenFile)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read web identity token file: %w", err)
 	}
